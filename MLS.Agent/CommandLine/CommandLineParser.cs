@@ -55,6 +55,11 @@ namespace MLS.Agent.CommandLine
             StartServer startServer = null,
             InvocationContext context = null);
 
+        public delegate Task Publish(
+            VerifyOptions options,
+            IConsole console,
+            StartupOptions startupOptions);
+
         public static Parser Create(
             StartServer startServer = null,
             Demo demo = null,
@@ -63,6 +68,7 @@ namespace MLS.Agent.CommandLine
             Install install = null,
             Verify verify = null,
             Jupyter jupyter = null,
+            Publish publish = null,
             IServiceCollection services = null)
         {
             startServer = startServer ??
@@ -97,6 +103,8 @@ namespace MLS.Agent.CommandLine
             services = services ??
              new ServiceCollection();
 
+            publish = publish ?? PublishCommand.Do;
+
             var rootCommand = StartInTryMode();
 
             rootCommand.AddCommand(StartInHostedMode());
@@ -106,6 +114,7 @@ namespace MLS.Agent.CommandLine
             rootCommand.AddCommand(Install());
             rootCommand.AddCommand(Verify());
             rootCommand.AddCommand(Jupyter());
+            rootCommand.AddCommand(Publish());
 
             return new CommandLineBuilder(rootCommand)
                    .UseDefaults()
@@ -387,6 +396,25 @@ namespace MLS.Agent.CommandLine
                 });
 
                 return verifyCommand;
+            }
+
+            Command Publish()
+            {
+                var publishCommand = new Command("publish", "publish")
+                {
+                    Argument = new Argument<DirectoryInfo>(() => new DirectoryInfo(Directory.GetCurrentDirectory()))
+                    {
+                        Name = nameof(VerifyOptions.Dir).ToLower(),
+                        Description = "Specify the path to the root directory"
+                    }.ExistingOnly()
+                };
+
+                publishCommand.Handler = CommandHandler.Create<VerifyOptions, IConsole, StartupOptions>((options, console, startupOptions) =>
+                {
+                    return publish(options, console, startupOptions);
+                });
+
+                return publishCommand;
             }
         }
     }

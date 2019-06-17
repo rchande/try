@@ -29,8 +29,17 @@
     <None Remove="node_modules\**" />
     <None Remove="TestResults\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Wyam.Markdown">
+      <HintPath>E:\Wyam\src\extensions\Wyam.Markdown\bin\Debug\netstandard2.0\Wyam.Markdown.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Wyam.Common" Version="2.2.4">
+    </PackageReference>
+    <PackageReference Include="Wyam.Core" Version="2.2.4" />
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="2.2.0"/>
     <PackageReference Include="BadRequestOnInvalidModelFilter" Version="0.1.8580001">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
