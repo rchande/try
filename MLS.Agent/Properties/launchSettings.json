@@ -18,7 +18,7 @@
     },
     "MLS.Agent": {
       "commandName": "Project",
-      "commandLineArgs": "hosted",
+      "commandLineArgs": "publish E:\\test-wyam",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
