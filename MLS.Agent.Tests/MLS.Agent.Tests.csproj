@@ -12,6 +12,12 @@
   </ItemGroup>
  
   <ItemGroup>
+    <PackageReference Include="Wyam.Common" Version="2.2.4">
+    </PackageReference>
+    <PackageReference Include="Wyam.Core" Version="2.2.4" />
+    <PackageReference Include="Markdig" Version="0.17.0" />
+    <PackageReference Include="Markdig" Version="0.17.0" />
+    <!--<PackageReference Include="Wyam.Markdown" Version="2.2.4" />-->
     <PackageReference Include="FluentAssertions" Version="5.6.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.9.0" />
     <PackageReference Include="HttpResponseMessageAssertions" Version="0.1.8580001">
@@ -52,6 +58,12 @@
     <ProjectReference Include="..\MLS.Agent\MLS.Agent.csproj" />
     <ProjectReference Include="..\MLS.Agent.Tools\MLS.Agent.Tools.csproj" />
     <ProjectReference Include="..\WorkspaceServer.Tests\WorkspaceServer.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Wyam.Markdown">
+      <HintPath>E:\Wyam\src\extensions\Wyam.Markdown\bin\Debug\netstandard2.0\Wyam.Markdown.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
