@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <BlazorLinkerDescriptor Include="Linker.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Pages\_Imports.razor2" />
   </ItemGroup>
 
