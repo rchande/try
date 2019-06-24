@@ -167,6 +167,13 @@ namespace MLS.Agent
                     builder.UsePathBase("/LocalCodeRunner/blazor-console/");
                     builder.EnableCachingBlazorContent();
                     builder.UseClientSideBlazorFiles<MLS.Blazor.Program>();
+                    builder.UseRouting();
+
+                    builder.UseEndpoints(e =>
+                    {
+                        e.MapDefaultControllerRoute();
+                        e.MapFallbackToClientSideBlazor<MLS.Blazor.Program>("index.html");
+                    });
                 });
 
                 var budget = new Budget();

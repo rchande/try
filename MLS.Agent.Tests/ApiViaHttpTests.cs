@@ -841,7 +841,7 @@ namespace FibonacciTest
 
                 response.EnsureSuccess();
                 result = await response.Content.ReadAsStringAsync();
-                result.Should().Contain("DotNet.invokeMethodAsync");
+                result.Should().Contain("invokeMethodAsync");
             }
 
             // Now do the same thing in hosted mode using the already installed package
